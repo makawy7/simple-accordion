@@ -1,27 +1,18 @@
 import { useState } from "react";
-import data from "./data";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-function Questions() {
-  const [showId, setShowId] = useState(0);
-  const toggleHide = (id) => {
-    if (id == showId) {
-      setShowId(0);
-    } else {
-      setShowId(id);
-    }
-  };
+function Questions({ id, title, info }) {
+  const [show, setShow] = useState(false);
   return (
-    <section className="info">
-      {data.map((q) => (
-        <article key={q.id} className="question">
-          <header>
-            <h4>{q.title}</h4>
-            <button className="btn" onClick={() => toggleHide(q.id)}></button>
-          </header>
-          {showId == q.id && <p>{q.title}</p>}
-        </article>
-      ))}
-    </section>
+    <article key={id} className="question">
+      <header>
+        <h4>{title}</h4>
+        <button className="btn" onClick={() => setShow(!show)}>
+          {show ? <AiOutlineMinus /> : <AiOutlinePlus />}
+        </button>
+      </header>
+      {show && <p>{info}</p>}
+    </article>
   );
 }
 
