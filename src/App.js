@@ -1,8 +1,11 @@
+import Questions from "./Questions";
+
 function App() {
   return (
-    <>
-      <h1>App</h1>
-    </>
+    <div className="container">
+      <h3>questions and answers about login</h3>
+      <Questions />
+    </div>
   );
 }
 
